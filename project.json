@@ -79,6 +79,29 @@
       "options": {
         "jestConfig": "jest.config.ts"
       }
+    },
+    "serverless": {
+      "dependsOn": ["build"],
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/testing-ssr/serverless",
+        "main": "serverless.ts",
+        "tsConfig": "tsconfig.serverless.json",
+        "inlineStyleLanguage": "scss"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "vendorChunk": true
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }
